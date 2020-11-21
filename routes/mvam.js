@@ -3,15 +3,8 @@ var router = express.Router();
 // var MongoClient = require('mongodb').MongoClient;
 var mvam = require('../models/mvam')
 var cors = require('cors');
-var whitelist = ['https://zero-hunger.troclip.com', 'http://zero-hunger.troclip.com', 'http://localhost:4200']
 var corsOptions = {
-    origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'))
-        }
-    },
+    origin: ['https://zero-hunger.troclip.com', 'http://zero-hunger.troclip.com', 'http://localhost:4200'],
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
