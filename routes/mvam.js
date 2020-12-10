@@ -11,12 +11,12 @@ var corsOptions = {
 var db = undefined;
 /* GET users listing. */
 router.get('/inadequate-diet', cors(corsOptions), async function (req, res, next) {
-    let y = await mvam.mvamDataInadequateDiet();
+    let y = await mvam.mvamDataInadequateDiet(req.query.min, req.query.max);
     res.send(y);
 });
 
 router.get('/livelihood-based-coping', cors(corsOptions), async function (req, res, next) {
-let y = await mvam.mvamDataLivelihoodBasedCoping();
+    let y = await mvam.mvamDataLivelihoodBasedCoping(req.query.min, req.query.max);
     res.send(y);
 });
 
@@ -31,7 +31,7 @@ router.get('/max-date', cors(corsOptions), async function (req, res, next) {
 // });
 
 router.get('/inadequate-diet-trend/:filters?', cors(corsOptions), async function (req, res, next) {
-    let y = await mvam.mvamDataInadequateDietTrend(req.params.filters);
+    let y = await mvam.mvamDataInadequateDietTrend(req.params.filters, req.query.min, req.query.max);
     res.send(y);
 });
 
@@ -41,7 +41,7 @@ router.get('/inadequate-diet-trend/:filters?', cors(corsOptions), async function
 // });
 
 router.get('/livelihood-based-coping-trend/:filters?', cors(corsOptions), async function (req, res, next) {
-    let y = await mvam.mvamDataLivelihoodBasedCopingTrend(req.params.filters);
+    let y = await mvam.mvamDataLivelihoodBasedCopingTrend(req.params.filters, req.query.min, req.query.max);
     res.send(y);
 });
 
